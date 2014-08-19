@@ -1,7 +1,15 @@
 Django==1.6.5
+Jinja2==2.7.3
+MarkupSafe==0.23
 South==0.7.6
-distribute==0.6.34
+argparse==1.2.1
 dj-database-url==0.2.1
 dj-static==0.0.5
-html5lib==0.999
 gunicorn==19.1.1
+html5lib==0.999
+ipython==2.2.0
+pystache==0.5.4
+pyzmq==14.3.1
+six==1.7.3
+static==1.0.2
+wsgiref==0.1.2
