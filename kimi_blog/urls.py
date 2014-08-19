@@ -10,5 +10,6 @@ urlpatterns = patterns('',
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'blog/', views.blog, name='blog'),
+    url(r'blog/$', views.blog, name='blog'),
+    url(r'blog/(?P<file_name>.+)$', views.blog, name='blog'),
 )
