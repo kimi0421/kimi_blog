@@ -3,7 +3,7 @@
 <head>
 
 <meta charset="utf-8" />
-<title>How To Train Large Data_2014-August</title>
+<title>Simple Facts_2014-August</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -1680,7 +1680,16 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Large-Dataset">Large Dataset<a class="anchor-link" href="#Large-Dataset">&#182;</a></h2>
+<p>It just help me to remember some simple facts in statistics and machine learning.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Biased-and-Unbiased">Biased and Unbiased<a class="anchor-link" href="#Biased-and-Unbiased">&#182;</a></h2>
 </div>
 </div>
 </div>
@@ -1690,80 +1699,46 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>When I anticipated in Kaggle display ads competition, I encountered a problem that how can I train the data that is larger than 10G. In machine learning, when we train the data we always read the training data set into memory and do optimization calculation to find the global best parameters. But what if you don't have large memory? Can we parallel the training method, even the simplest linear regression model? Can we use map-reduce method? Can we partially train the data and then average all the trained model generated? There are so many questions I have and I don't have very clear answer. I would like to do some research using python code to solve my problem.</p>
+<p>Biased:</p>
+<p>\[ \frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^2\]</p>
+<p>Unbiased:</p>
+<p>\[ \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2\]</p>
+<p>As far as I understand, biased and unbiased are just two ways to measure variance, there are no good or bad judgment. The reason why we usually use unbiased is unbiased variance has the same expected mean value.</p>
+<p>\[\sum_{i=1}^{n}(x_i - \bar{x})^2 = \sum_{i=1}^{i=n}(x_i - \mu)^2 - n (\bar{x} - \mu)^2\]</p>
+<p>Thus:</p>
+<p>\[\sum_{i=1}^{n}(x_i - \bar{x})^2 = n\sigma^2 - n(\frac{\sigma^2}{n}) = (n-1)\sigma^2\]</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered">
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
+In&nbsp;[0]:
 </div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>I will try to use following strategy to solve the problem:</p>
-<ul>
-<li>Use some models that supports partially trained</li>
-<li>Train partial data and average all the models generated</li>
-<li>Use spark to train and predict large data set</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="SGD-Regression">SGD Regression<a class="anchor-link" href="#SGD-Regression">&#182;</a></h2>
+    <div class="input_area">
+<div class="highlight"><pre> 
+</pre></div>
+
 </div>
 </div>
 </div>
 
-<div class="cell border-box-sizing text_cell rendered">
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
 <div class="prompt input_prompt">
+In&nbsp;[]:
 </div>
 <div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>SGD has been successfully applied to large-scale and sparse machine learning problems often encountered in text classification and natural language processing. Given that the data is sparse, the classifiers in this module easily scale to problems with more than \(10^5\) training examples and more than \(10^5\) features. The disadvantages of Stochastic Gradient Descent include:</p>
-<ul>
-<li>SGD requires a number of hyperparameters such as the regularization parameter and the number of iterations.</li>
-<li>SGD is sensitive to feature scaling.</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>There are two cases for SGD implementation.</p>
-<ol style="list-style-type: decimal">
-<li>All the variables are numerical variables</li>
-<li>Some variables are categorical variables</li>
-</ol>
-<p>For small data sets, these are no problem. But for the large data set, if some variables are categorical variables, how can I transfer those 'too many' categorical variables to numerical variables. As far as I know, couple methods are able to encode categorical variables to numerical variables:</p>
-<ol style="list-style-type: decimal">
-<li>One-hot encoding (aka 1-of-K encoding)</li>
-<li>Feature hashing encoding</li>
-</ol>
-<p>One-hot encoding:</p>
-<pre><code>This method transforms each categorical feature with m possible values into m binary features, with only one active. For example, a person could have features [&quot;male&quot;, &quot;female&quot;], [&quot;from Europe&quot;, &quot;from US&quot;, &quot;from Asia&quot;], [&quot;uses Firefox&quot;, &quot;uses Chrome&quot;, &quot;uses Safari&quot;, &quot;uses Internet Explorer&quot;]. Such features can be efficiently coded as integers, for instance [&quot;male&quot;, &quot;from US&quot;, &quot;uses Internet Explorer&quot;] could be expressed as [0, 1, 3] while [&quot;female&quot;, &quot;from Asia&quot;, &quot;uses Chrome&quot;] would be [1, 2, 1]. After one-hot encoding, [&quot;male&quot;, &quot;from US&quot;, &quot;uses Internet Explorer&quot;] will be [ 1.,  0.,  0.,  1.,  0.,  0.,  0.,  0.,  1.]</code></pre>
-<p>Feature hashing encoding:</p>
-<pre><code>It is the easiest way to convert categorical variables to numerical variables. I follow the steps:
-1. Use any hashing function to hash the feature. 
-2. Convert hashed string to 32bit integer. It is easy to implement and do not need large memory and easy to parallize. </code></pre>
-<p>From above analysis, one-hot encoding will create a very large matrix if the input data is too large, so I will choose feature hashing encoding</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
+    <div class="input_area">
+<div class="highlight"><pre> 
+</pre></div>
 
 </div>
 </div>
+</div>
+
 </div>
     </div>
   </div>
