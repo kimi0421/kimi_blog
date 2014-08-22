@@ -21,6 +21,8 @@ def blog(request, **kwargs):
             continue
         if 'checkpoints' in file_name:
             continue
+        if 'files' in file_name:
+            continue
 
         date = file_name.split('.')[0].split('_')[1].replace('-', ' ')
         name = file_name.split('.')[0].split('_')[0]

@@ -3,7 +3,7 @@
 <head>
 
 <meta charset="utf-8" />
-<title>Bayesian Learning_2014-July</title>
+<title>Kalman Filter_2014-September</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -1680,7 +1680,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h1>
+<h1 id="What-is-Kalman-Filter">What is Kalman Filter<a class="anchor-link" href="#What-is-Kalman-Filter">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -1690,73 +1690,15 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Let's look at an example first.</p>
-<p>Suppose that Bob can decide to go to work by one of three modes of transportation, car, bus, or commuter train. Because of high traffic, if he decides to go by car, there is a <span class="math">\(50\%\)</span> chance he will be late. If he goes by bus, which has special reserved lanes but is sometimes overcrowded, the probability of being late is only <span class="math">\(20\%\)</span>. The commuter train is almost never late, with probability of only <span class="math">\(1\%\)</span>, but is more expensive than the bus.</p>
+<p>Some facts need remeber:</p>
 <ol style="list-style-type: decimal">
-<li><p>Suppose that Bob is late one day, and his boss wishes to estimate the probability that he drove to work that day by car. Since he does not know which mode of transportation Bob usually uses, he gives a prior probability of <span class="math">\(\frac{1}{3}\)</span> to each of the three possibilities. What is the boss' estimate of the probability that Bob drove to work?</p></li>
-<li><p>Suppose that a coworker of Bob's knows that he almost always takes the commuter train to work, never takes the bus, but sometimes, <span class="math">\(10\%\)</span> of the time, takes the car. What is the coworkers probability that Bob drove to work that day, given that he was late?</p></li>
+<li>It is the optimal estimator for one-dimensional linear systems with Gaussian error statistics.</li>
+<li>Use for smoothing noisy data and providing estimates of parameters.</li>
+<li>It was uesd in Apollo navigation computer that took Neil Armstrong to the moon and brouht him back!!!!!</li>
 </ol>
-<p>In order to answer these two questions we use Bayes Theorem to solve the problem:</p>
-<ol style="list-style-type: decimal">
-<li><p>List all the information we have:</p>
-<p><span class="math">\(P(late|car) = 0.5\)</span>, <span class="math">\(P(late|bus) = 0.2\)</span>, <span class="math">\(P(late|train) = 0.01\)</span>. Since Bob is already late, thus <span class="math">\(P(late) = 1\)</span></p>
-<p>Given the condition we have:</p>
-<p><span class="math">\(P(car) = \frac{1}{3}\)</span>, <span class="math">\(P(bus) = \frac{1}{3}\)</span>, <span class="math">\(P(train) = \frac{1}{3}\)</span></p>
-<p>Thus the probability that Bob drove to work</p>
-<p><span class="math">\[P(car|late) = \frac{P(late|car)P(car)}{P(late)}\]</span></p>
-<p><span class="math">\[P(car|late) = \frac{0.5 \cdot 0.33}{P(late)}\]</span></p>
-<p>so whate is <span class="math">\(P(late)\)</span>, it is:</p>
-<p><span class="math">\[P(late) = P(late|car)P(car) + P(late|bus)P(bus) + P(late|train)P(train) = (0.5 + 0.2 + 0.01) / 3 \]</span></p></li>
-<li><p>Given the condition:</p>
-<p><span class="math">\(P(bus) = 0\)</span>, <span class="math">\(P(car) = 0.1\)</span>, <span class="math">\(P(train) = 0.9\)</span>, so we can have the similar the calculation from above</p></li>
-</ol>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="The-Basic-Theorem">The Basic Theorem<a class="anchor-link" href="#The-Basic-Theorem">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Bayes Theorem</p>
-<p><span class="math">\[P(h|D) = \frac{P(D|h)P(h)}{P(D)}\]</span></p>
-<p><span class="math">\[P(h\cap D) = P(h|D) P(D)\]</span></p>
-<p>It is a classic theorem and the Bayesian learning inducts from this formula</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Why">Why<a class="anchor-link" href="#Why">&#182;</a></h1>
-</div>
-</div>
-</div>
-
-<div class="cell border-box-sizing text_cell rendered">
-<div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>All machine learning algorithm will have uncertainty including:</p>
-<ul>
-<li>Measurement noise</li>
-<li>Model uncertainty</li>
-<li>Parameter uncertainty</li>
-</ul>
-<p>Bayesian approach is to quantify the uncertainty. Some normal approaches will not consider quantifying the uncertainty, and the direct result will be 'over-fitting'. For example, if you increase the order of the linear model, you will find that reproduced model fitts the observed data so well. However, it often performs poorly on the test data validation. It does not take uncertainty into account, thus it is too 'precise' in the training data causing the prediction goes only in one direction. In fact, prediction can be in any regions. Bayesian approach will help us to understand how the model is working. It specify a region that 'parameters' lie in with 'high confidence'.</p>
+<p>Before introducing the Kalman filter, let's take a look at an example: <img src="/static/ipython_blog/files/kalman_filter.png" height="300" width="300"></p>
+<p>We would like to measure the level of water in a tank, showing above figure. Trying to estimate the level of water in the tank, which is unknow. The measurements obtained are from the level of the 'float' on top of the water. This could be an electronic device, or a simple mechanical device for measuring. Assume you have hydrologic model that predicts river water level every hour.</p>
+<p>The model is not perfect and you can't fully trust, so you can use the measurement device. However, the device that measures the river level can not be trusted 100% either. How to combine both the outputs from the model and from the measurement to have the better estimate, we can use Kalman filtering. I will discuss this example in details later.</p>
 </div>
 </div>
 </div>
