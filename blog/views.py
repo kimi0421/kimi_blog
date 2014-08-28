@@ -46,3 +46,8 @@ def blog(request, **kwargs):
     topic_name = subject
     topics = {'message': message, 'item_list': item_list, 'topic_name': topic_name}
     return render_to_response('base.html', topics, context)
+
+
+def cover(request):
+    context = RequestContext(request)
+    return render_to_response('index.html', None, context)
