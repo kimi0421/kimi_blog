@@ -1702,6 +1702,221 @@ div#notebook {
 </div>
 </div>
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Basic-Mathematics">Basic Mathematics<a class="anchor-link" href="#Basic-Mathematics">&#182;</a></h1>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Covariance: <span class="math">\[cov(x_1, x_2) = E[(x_1 - \bar{x_1})(x_2 - \bar{x_2})]\]</span></p>
+<p>Correlation coefficient: <span class="math">\[\rho_{12} = \frac{\rho_{x_1x_2}^2}{\rho_{x_1}\rho_{x_2}}\]</span></p>
+<p>where: <span class="math">\[-1 \le \rho_{12} \le +1\]</span></p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Statement">Statement<a class="anchor-link" href="#Statement">&#182;</a></h1>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The Kalman filter model assumes that the state of a system at a time <span class="math">\(t\)</span> evolved from the prior state at time <span class="math">\(t-1\)</span> according to the equation</p>
+<p><span class="math">\[x_t = F_t x_{t-1} + B_tu_t + w_t\]</span></p>
+<p>with a measurement <span class="math">\(z\in \mathbb{R}^m\)</span> that is</p>
+<p><span class="math">\[z_t = Hx_t + v_t\]</span></p>
+<ul>
+<li><span class="math">\(x_t\)</span> is the state vector</li>
+<li><span class="math">\(F_t\)</span> is the state transition matrix</li>
+<li><span class="math">\(B_t\)</span> is the control input matrix which applies the effect of each control input parameter in the vector <span class="math">\(u_t\)</span></li>
+<li><span class="math">\(w_t\)</span> is the vector containing the process noise terms for each parameter</li>
+</ul>
+<p>The Kalman filter is essentially a set of mathematical equations that implement a predictor-corrector type estimator that is optimal in the sense that it minimizes the estimated error covariance <span class="math">\(—\)</span> when some presumed conditions are met.</p>
+<p>For the white noise <span class="math">\(w_t\)</span> and <span class="math">\(v_t\)</span>, they are assumed to be independent with probability distributions:</p>
+<p><span class="math">\[P(w) \sim N(0, Q)\]</span> <span class="math">\[P(v) \sim N(0, R)\]</span></p>
+<p><span class="math">\(Q\)</span> and <span class="math">\(R\)</span> may change over the time. In order to have the prediction, we need do Time Update and Measurement Update:</p>
+<ul>
+<li><p>Time Update (Prediction) <span class="math">\[\hat{x}_{t|t-1} = F_t \hat{x}_{t-1|t-1} + B_t u_t\]</span> <span class="math">\[P_{t|t-1} = A P_{t-1|t-1} A^{T} + Q_t\]</span></p></li>
+<li><p>Measurement Update <span class="math">\[\hat{x}_{t|t} = \hat{x}_{t|t-1} + K_t(y_t - H_t\hat{x}_{t|t-1}\]</span> <span class="math">\[K_t = P_{t|t-1}H^T_t(H_tP_{t|t-1}H_t^T + R_t)^{-1}\]</span> <span class="math">\[P_k = (\mathbb{1} - K_tH_t)P_{t|t-1}\]</span></p></li>
+</ul>
+<p>where:</p>
+<ul>
+<li><span class="math">\(F\)</span>: State transition matrix</li>
+<li><span class="math">\(u\)</span>: Control variables</li>
+<li><span class="math">\(B\)</span>: Control matrix</li>
+<li><span class="math">\(P\)</span>: State variance matrix (estimation errors)</li>
+<li><span class="math">\(Q\)</span>: Process variance matrix (process errors)</li>
+<li><span class="math">\(y\)</span>: Measurement variables</li>
+<li><span class="math">\(H\)</span>: Meaturement matrix</li>
+<li><span class="math">\(K\)</span>: Kalman gain</li>
+<li><span class="math">\(R\)</span>: Measurement variance matrix (measurement errors)</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h1>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>From above water float example, I can model the whole system to measure the tank level.</p>
+<p>Assume it is a static model:</p>
+<p>The tank level will be constant <span class="math">\(L = c\)</span>, and the state variable <span class="math">\(\hat{x} = x\)</span> where <span class="math">\(x\)</span> is the estimate of <span class="math">\(L\)</span>. So the time update equation become <span class="math">\(x_{t+1} = x_t\)</span>, <span class="math">\(A = 0\)</span> and <span class="math">\(F_t = 1\)</span> for any <span class="math">\(t \geq 0\)</span>. We assume that the measurement is the same as our state estimate <span class="math">\(x\)</span> (i.e., <span class="math">\(H=1\)</span>). Then we should model the noice with <span class="math">\(R\)</span> and <span class="math">\(Q\)</span>. The filter will be as following:</p>
+<ul>
+<li><p>Prediction: <span class="math">\[x_{t|t-1} = x_{t-1|t-1}\]</span> <span class="math">\[p_{t|t-1} = p_{t-1|t-1} + q_t\]</span></p></li>
+<li><p>Update: <span class="math">\[x_{t|t} = x_{t|t-1} + K_t(y_t - x_{t|t-1}\]</span> <span class="math">\[K_t = p_{t|t-1}(p_{t|t-1} + r)^{-1}\]</span> <span class="math">\[p_{t|t} = (1 - K_t)p_{t|t-1}\]</span></p></li>
+</ul>
+<p>In the example let <span class="math">\(c = 1\)</span>, then we can illustrate how kalman filter updates. We can initialize <span class="math">\(x\)</span> and <span class="math">\(p\)</span> then iterate to <span class="math">\(x_t\)</span>. Let <span class="math">\(x_0 = 0\)</span> and <span class="math">\(p_0 = 1000\)</span>. For the error <span class="math">\(q\)</span>, let <span class="math">\(q = 0.0001\)</span>.</p>
+<p><span class="math">\[x_{1|0} = 0\]</span> <span class="math">\[p_{1|0} = 1000 + 0.0001\]</span></p>
+<p>The hypothetical measurement we get is <span class="math">\(y_1 = 0.9\)</span> and the noise <span class="math">\(r = 0.1\)</span>. So we can update:</p>
+<p><span class="math">\[K_1 = 1000.0001(1000 \cdot 0.0001 + 0.1)^{-1} = 0.9999\]</span> <span class="math">\[x_{1|1} = 0 + 0.9999(0.9 - 0) = 0.8999\]</span> <span class="math">\[p_{1|1} = (1 - 0.9999) 1000.0001 = 0.1\]</span></p>
+<p>With more and more measurements we can update the <span class="math">\(x_t\)</span> iterately.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Using-Python">Using Python<a class="anchor-link" href="#Using-Python">&#182;</a></h1>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It is not necessary to use a specific package for Kalman Filter, using basic implementation is more flexible. Here is a example from Scipy website</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[1]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="o">%</span><span class="k">matplotlib</span> <span class="n">inline</span>
+<span class="c"># Kalman filter example demo in Python</span>
+
+<span class="c"># A Python implementation of the example given in pages 11-15 of &quot;An</span>
+<span class="c"># Introduction to the Kalman Filter&quot; by Greg Welch and Gary Bishop,</span>
+<span class="c"># University of North Carolina at Chapel Hill, Department of Computer</span>
+<span class="c"># Science, TR 95-041,</span>
+<span class="c"># http://www.cs.unc.edu/~welch/kalman/kalmanIntro.html</span>
+
+<span class="c"># by Andrew D. Straw</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span>
+<span class="kn">import</span> <span class="nn">pylab</span>
+
+<span class="c"># intial parameters</span>
+<span class="n">n_iter</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">sz</span> <span class="o">=</span> <span class="p">(</span><span class="n">n_iter</span><span class="p">,)</span> <span class="c"># size of array</span>
+<span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.37727</span> <span class="c"># truth value (typo in example at top of p. 13 calls this z)</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">numpy</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mf">0.1</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="n">sz</span><span class="p">)</span> <span class="c"># observations (normal about x, sigma=0.1)</span>
+
+<span class="n">Q</span> <span class="o">=</span> <span class="mf">1e-5</span> <span class="c"># process variance</span>
+
+<span class="c"># allocate space for arrays</span>
+<span class="n">xhat</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">sz</span><span class="p">)</span>      <span class="c"># a posteri estimate of x</span>
+<span class="n">P</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">sz</span><span class="p">)</span>         <span class="c"># a posteri error estimate</span>
+<span class="n">xhatminus</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">sz</span><span class="p">)</span> <span class="c"># a priori estimate of x</span>
+<span class="n">Pminus</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">sz</span><span class="p">)</span>    <span class="c"># a priori error estimate</span>
+<span class="n">K</span><span class="o">=</span><span class="n">numpy</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">sz</span><span class="p">)</span>         <span class="c"># gain or blending factor</span>
+
+<span class="n">R</span> <span class="o">=</span> <span class="mf">0.1</span><span class="o">**</span><span class="mi">2</span> <span class="c"># estimate of measurement variance, change to see effect</span>
+
+<span class="c"># intial guesses</span>
+<span class="n">xhat</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">P</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n_iter</span><span class="p">):</span>
+    <span class="c"># time update</span>
+    <span class="n">xhatminus</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">xhat</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">Pminus</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">P</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="n">Q</span>
+
+    <span class="c"># measurement update</span>
+    <span class="n">K</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">Pminus</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">/</span><span class="p">(</span> <span class="n">Pminus</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">+</span><span class="n">R</span> <span class="p">)</span>
+    <span class="n">xhat</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">xhatminus</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">+</span><span class="n">K</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="n">z</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">-</span><span class="n">xhatminus</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+    <span class="n">P</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">K</span><span class="p">[</span><span class="n">k</span><span class="p">])</span><span class="o">*</span><span class="n">Pminus</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+
+<span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">z</span><span class="p">,</span><span class="s">&#39;k+&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">&#39;noisy measurements&#39;</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xhat</span><span class="p">,</span><span class="s">&#39;b-&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">&#39;a posteri estimate&#39;</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s">&#39;g&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s">&#39;truth value&#39;</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Iteration&#39;</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;Voltage&#39;</span><span class="p">)</span>
+
+<span class="n">pylab</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">valid_iter</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">n_iter</span><span class="p">)</span> <span class="c"># Pminus not valid at step 0</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">valid_iter</span><span class="p">,</span><span class="n">Pminus</span><span class="p">[</span><span class="n">valid_iter</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s">&#39;a priori error estimate&#39;</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">&#39;Iteration&#39;</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">&#39;$(Voltage)^2$&#39;</span><span class="p">)</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">setp</span><span class="p">(</span><span class="n">pylab</span><span class="o">.</span><span class="n">gca</span><span class="p">(),</span><span class="s">&#39;ylim&#39;</span><span class="p">,[</span><span class="mi">0</span><span class="p">,</span><span class="o">.</span><span class="mo">01</span><span class="p">])</span>
+<span class="n">pylab</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_text output_pyerr">
+<pre>
+<span class="ansired">---------------------------------------------------------------------------</span>
+<span class="ansired">ImportError</span>                               Traceback (most recent call last)
+<span class="ansigreen">&lt;ipython-input-1-4b54783b8c4b&gt;</span> in <span class="ansicyan">&lt;module&gt;</span><span class="ansiblue">()</span>
+<span class="ansigreen">     10</span> <span class="ansiblue"></span>
+<span class="ansigreen">     11</span> <span class="ansigreen">import</span> numpy<span class="ansiblue"></span>
+<span class="ansigreen">---&gt; 12</span><span class="ansired"> </span><span class="ansigreen">import</span> pylab<span class="ansiblue"></span>
+<span class="ansigreen">     13</span> <span class="ansiblue"></span>
+<span class="ansigreen">     14</span> <span class="ansired"># intial parameters</span><span class="ansiblue"></span><span class="ansiblue"></span>
+
+<span class="ansired">ImportError</span>: No module named pylab</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
