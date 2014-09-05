@@ -1741,7 +1741,7 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Algorithm called 'ID3' is usually used for decision tree. It constructs decision trees top-down, begining with the questions &quot;which attribute should be tested at the root of the tree?&quot; To anwser this question, each attribute is evaluated using a statical test to determine how well it alone classifies the training examples.</p>
-<p>We used \({Information Gained}\) to specifiy how good is the attribute.</p>
+<p>We used <span class="math">\({Information Gained}\)</span> to specifiy how good is the attribute.</p>
 </div>
 </div>
 </div>
@@ -1760,11 +1760,11 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Entropy: \[H(\frac{p}{p+n}, \frac{n}{p+n}) = - \frac{p}{p+n} \log_{2}{\frac{p}{p+n}} - \frac{n}{p+n} \log_{2}{\frac{n}{p+n}}\]</p>
-<p>where: \(p\) is positive and \(n\) is negative</p>
-<p>If there are three characteristics, it would be \(\pi_1\), \(\pi_2\), \(\pi_3\), then the entropy would be:</p>
-<p>\[H(\pi_i) = - \sum \pi_i \log \pi_i\]</p>
-<p>Information gain (\(I\)) is: \[I(A) = H(\frac{p}{p+n}, \frac{n}{p+n}) - EH(A)\]</p>
+<p>Entropy: <span class="math">\[H(\frac{p}{p+n}, \frac{n}{p+n}) = - \frac{p}{p+n} \log_{2}{\frac{p}{p+n}} - \frac{n}{p+n} \log_{2}{\frac{n}{p+n}}\]</span></p>
+<p>where: <span class="math">\(p\)</span> is positive and <span class="math">\(n\)</span> is negative</p>
+<p>If there are three characteristics, it would be <span class="math">\(\pi_1\)</span>, <span class="math">\(\pi_2\)</span>, <span class="math">\(\pi_3\)</span>, then the entropy would be:</p>
+<p><span class="math">\[H(\pi_i) = - \sum \pi_i \log \pi_i\]</span></p>
+<p>Information gain (<span class="math">\(I\)</span>) is: <span class="math">\[I(A) = H(\frac{p}{p+n}, \frac{n}{p+n}) - EH(A)\]</span></p>
 </div>
 </div>
 </div>
@@ -1792,7 +1792,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<img src="/static/ipython_blog/files//static/ipython_blog/files/decision_tree.png" height="600" width="600">
+<p><img src="/static/ipython_blog/files/decision_tree.png" height="600" width="600"></p>
 </div>
 </div>
 </div>
@@ -1801,11 +1801,11 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>In the above case we have the decision 'Wait' or 'Not Wait', so they are \(p\) and \(n\), thus \(p = n = 6\)</p>
+<p>In the above case we have the decision 'Wait' or 'Not Wait', so they are <span class="math">\(p\)</span> and <span class="math">\(n\)</span>, thus <span class="math">\(p = n = 6\)</span></p>
 <p>From above table we take two attributes, 'patrons' and 'type' as our example to see which attribute should be the root of our tree:</p>
-<p>\[H(\frac{p}{p+n}, \frac{n}{p+n}) = H(\frac{6}{12}, \frac{6}{12}) = 1\]</p>
-<p>\[I(Patrons) = 1 - [\frac{2}{12} H (0, 1) + \frac{4}{12} H(1, 0) + \frac{6}{12} H(\frac{2}{6}, \frac{4}{6})] = 0.0541\]</p>
-<p>\[I(Type) = 1 - [\frac{2}{12} H (\frac{1}{2}, \frac{1}{2}) + \frac{2}{12} H(\frac{1}{2}, \frac{1}{2}) + \frac{4}{12}H(\frac{2}{4}, \frac{2}{4}) + \frac{4}{12} H(\frac{2}{4}, \frac{2}{4})] = 0\]</p>
+<p><span class="math">\[H(\frac{p}{p+n}, \frac{n}{p+n}) = H(\frac{6}{12}, \frac{6}{12}) = 1\]</span></p>
+<p><span class="math">\[I(Patrons) = 1 - [\frac{2}{12} H (0, 1) + \frac{4}{12} H(1, 0) + \frac{6}{12} H(\frac{2}{6}, \frac{4}{6})] = 0.0541\]</span></p>
+<p><span class="math">\[I(Type) = 1 - [\frac{2}{12} H (\frac{1}{2}, \frac{1}{2}) + \frac{2}{12} H(\frac{1}{2}, \frac{1}{2}) + \frac{4}{12}H(\frac{2}{4}, \frac{2}{4}) + \frac{4}{12} H(\frac{2}{4}, \frac{2}{4})] = 0\]</span></p>
 </div>
 </div>
 </div>

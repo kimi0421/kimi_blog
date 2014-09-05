@@ -1700,13 +1700,13 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Biased:</p>
-<p>\[ \frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^2\]</p>
+<p><span class="math">\[ \frac{1}{n}\sum_{i=1}^{n}(x_i - \bar{x})^2\]</span></p>
 <p>Unbiased:</p>
-<p>\[ \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2\]</p>
+<p><span class="math">\[ \frac{1}{n-1}\sum_{i=1}^{n}(x_i - \bar{x})^2\]</span></p>
 <p>As far as I understand, biased and unbiased are just two ways to measure variance, there are no good or bad judgment. The reason why we usually use unbiased is unbiased variance has the same expected mean value.</p>
-<p>\[\sum_{i=1}^{n}(x_i - \bar{x})^2 = \sum_{i=1}^{i=n}(x_i - \mu)^2 - n (\bar{x} - \mu)^2\]</p>
+<p><span class="math">\[\sum_{i=1}^{n}(x_i - \bar{x})^2 = \sum_{i=1}^{i=n}(x_i - \mu)^2 - n (\bar{x} - \mu)^2\]</span></p>
 <p>Thus:</p>
-<p>\[\sum_{i=1}^{n}(x_i - \bar{x})^2 = n\sigma^2 - n(\frac{\sigma^2}{n}) = (n-1)\sigma^2\]</p>
+<p><span class="math">\[\sum_{i=1}^{n}(x_i - \bar{x})^2 = n\sigma^2 - n(\frac{\sigma^2}{n}) = (n-1)\sigma^2\]</span></p>
 </div>
 </div>
 </div>
@@ -1726,15 +1726,15 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The kernel estimate converges in probability to the true density.</p>
-<p>\[\hat{f}(x, h) = \frac{1}{nh}\sum_{i=1}^{n}K(\frac{x-X_i}{h})\]</p>
-<p>with kernel function \(K\) and bandwidth \(h\).</p>
+<p><span class="math">\[\hat{f}(x, h) = \frac{1}{nh}\sum_{i=1}^{n}K(\frac{x-X_i}{h})\]</span></p>
+<p>with kernel function <span class="math">\(K\)</span> and bandwidth <span class="math">\(h\)</span>.</p>
 <p>Some kernels:</p>
-<p>\[K(x, p) = \frac{(1-x^2)^p}{2^{2p+1}B(p+1, p+1)}1_{\mid x \mid&lt;1}\]</p>
-<p>with \(B(a, b) = \Gamma(a)\Gamma(b)/\Gamma(a+b)\)</p>
+<p><span class="math">\[K(x, p) = \frac{(1-x^2)^p}{2^{2p+1}B(p+1, p+1)}1_{\mid x \mid&lt;1}\]</span></p>
+<p>with <span class="math">\(B(a, b) = \Gamma(a)\Gamma(b)/\Gamma(a+b)\)</span></p>
 <ul>
-<li>\(p=0\): Uniform kernel</li>
-<li>\(p=1\): Epanechnikov kernel</li>
-<li>\(p=2\): Biweight kernel</li>
+<li><span class="math">\(p=0\)</span>: Uniform kernel</li>
+<li><span class="math">\(p=1\)</span>: Epanechnikov kernel</li>
+<li><span class="math">\(p=2\)</span>: Biweight kernel</li>
 </ul>
 </div>
 </div>

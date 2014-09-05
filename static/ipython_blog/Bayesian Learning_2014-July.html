@@ -1691,24 +1691,24 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's look at an example first.</p>
-<p>Suppose that Bob can decide to go to work by one of three modes of transportation, car, bus, or commuter train. Because of high traffic, if he decides to go by car, there is a \(50\%\) chance he will be late. If he goes by bus, which has special reserved lanes but is sometimes overcrowded, the probability of being late is only \(20\%\). The commuter train is almost never late, with probability of only \(1\%\), but is more expensive than the bus.</p>
+<p>Suppose that Bob can decide to go to work by one of three modes of transportation, car, bus, or commuter train. Because of high traffic, if he decides to go by car, there is a <span class="math">\(50\%\)</span> chance he will be late. If he goes by bus, which has special reserved lanes but is sometimes overcrowded, the probability of being late is only <span class="math">\(20\%\)</span>. The commuter train is almost never late, with probability of only <span class="math">\(1\%\)</span>, but is more expensive than the bus.</p>
 <ol style="list-style-type: decimal">
-<li><p>Suppose that Bob is late one day, and his boss wishes to estimate the probability that he drove to work that day by car. Since he does not know which mode of transportation Bob usually uses, he gives a prior probability of \(\frac{1}{3}\) to each of the three possibilities. What is the boss' estimate of the probability that Bob drove to work?</p></li>
-<li><p>Suppose that a coworker of Bob's knows that he almost always takes the commuter train to work, never takes the bus, but sometimes, \(10\%\) of the time, takes the car. What is the coworkers probability that Bob drove to work that day, given that he was late?</p></li>
+<li><p>Suppose that Bob is late one day, and his boss wishes to estimate the probability that he drove to work that day by car. Since he does not know which mode of transportation Bob usually uses, he gives a prior probability of <span class="math">\(\frac{1}{3}\)</span> to each of the three possibilities. What is the boss' estimate of the probability that Bob drove to work?</p></li>
+<li><p>Suppose that a coworker of Bob's knows that he almost always takes the commuter train to work, never takes the bus, but sometimes, <span class="math">\(10\%\)</span> of the time, takes the car. What is the coworkers probability that Bob drove to work that day, given that he was late?</p></li>
 </ol>
 <p>In order to answer these two questions we use Bayes Theorem to solve the problem:</p>
 <ol style="list-style-type: decimal">
 <li><p>List all the information we have:</p>
-<p>\(P(late|car) = 0.5\), \(P(late|bus) = 0.2\), \(P(late|train) = 0.01\). Since Bob is already late, thus \(P(late) = 1\)</p>
+<p><span class="math">\(P(late|car) = 0.5\)</span>, <span class="math">\(P(late|bus) = 0.2\)</span>, <span class="math">\(P(late|train) = 0.01\)</span>. Since Bob is already late, thus <span class="math">\(P(late) = 1\)</span></p>
 <p>Given the condition we have:</p>
-<p>\(P(car) = \frac{1}{3}\), \(P(bus) = \frac{1}{3}\), \(P(train) = \frac{1}{3}\)</p>
+<p><span class="math">\(P(car) = \frac{1}{3}\)</span>, <span class="math">\(P(bus) = \frac{1}{3}\)</span>, <span class="math">\(P(train) = \frac{1}{3}\)</span></p>
 <p>Thus the probability that Bob drove to work</p>
-<p>\[P(car|late) = \frac{P(late|car)P(car)}{P(late)}\]</p>
-<p>\[P(car|late) = \frac{0.5 \cdot 0.33}{P(late)}\]</p>
-<p>so whate is \(P(late)\), it is:</p>
-<p>\[P(late) = P(late|car)P(car) + P(late|bus)P(bus) + P(late|train)P(train) = (0.5 + 0.2 + 0.01) / 3 \]</p></li>
+<p><span class="math">\[P(car|late) = \frac{P(late|car)P(car)}{P(late)}\]</span></p>
+<p><span class="math">\[P(car|late) = \frac{0.5 \cdot 0.33}{P(late)}\]</span></p>
+<p>so whate is <span class="math">\(P(late)\)</span>, it is:</p>
+<p><span class="math">\[P(late) = P(late|car)P(car) + P(late|bus)P(bus) + P(late|train)P(train) = (0.5 + 0.2 + 0.01) / 3 \]</span></p></li>
 <li><p>Given the condition:</p>
-<p>\(P(bus) = 0\), \(P(car) = 0.1\), \(P(train) = 0.9\), so we can have the similar the calculation from above</p></li>
+<p><span class="math">\(P(bus) = 0\)</span>, <span class="math">\(P(car) = 0.1\)</span>, <span class="math">\(P(train) = 0.9\)</span>, so we can have the similar the calculation from above</p></li>
 </ol>
 </div>
 </div>
@@ -1729,8 +1729,8 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Bayes Theorem</p>
-<p>\[P(h|D) = \frac{P(D|h)P(h)}{P(D)}\]</p>
-<p>\[P(h\cap D) = P(h|D) P(D)\]</p>
+<p><span class="math">\[P(h|D) = \frac{P(D|h)P(h)}{P(D)}\]</span></p>
+<p><span class="math">\[P(h\cap D) = P(h|D) P(D)\]</span></p>
 <p>It is a classic theorem and the Bayesian learning inducts from this formula</p>
 </div>
 </div>
