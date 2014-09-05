@@ -1620,7 +1620,7 @@ span#checkpoint_status,span#autosave_status{font-size:small}
 /* Overrides of notebook CSS for static HTML export */
 body {
   overflow: visible;
-  padding: 0px;
+  padding: 8px;
 }
 
 div#notebook {
@@ -1706,7 +1706,7 @@ div#notebook {
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[2]:
+In&nbsp;[1]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -1825,7 +1825,7 @@ Overwriting files/f.template
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[7]:
+In&nbsp;[2]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -1865,7 +1865,7 @@ In&nbsp;[7]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[8]:
+In&nbsp;[3]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -1891,7 +1891,7 @@ In&nbsp;[8]:
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Tutorial">Tutorial<a class="anchor-link" href="#Tutorial">&#182;</a></h1>
+<h1 id="Example">Example<a class="anchor-link" href="#Example">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -1899,7 +1899,7 @@ In&nbsp;[8]:
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[9]:
+In&nbsp;[4]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
@@ -1915,14 +1915,14 @@ In&nbsp;[9]:
 
 
 <div class="output_area"><div class="prompt output_prompt">
-    Out[9]:</div>
+    Out[4]:</div>
 
 <div class="output_html rendered_html output_subarea output_pyout">
 
         <iframe
             width="530"
             height=430"
-            src="/static/ipython_blog/files/__tmp4349_1.html"
+            src="files/__tmp14570_1.html"
             frameborder="0"
             allowfullscreen
         ></iframe>
@@ -1935,17 +1935,314 @@ In&nbsp;[9]:
 </div>
 
 </div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Tutorial">Tutorial<a class="anchor-link" href="#Tutorial">&#182;</a></h1>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Next I am going to show how to use the d3.js in the code.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="D3.js-Setup">D3.js Setup<a class="anchor-link" href="#D3.js-Setup">&#182;</a></h1>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can just install d3.js in script source link from official website:</p>
+</div>
+</div>
+</div>
+                <!DOCTYPE html>
+<html>
+     <head>
+         <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+     </head>
+     <body>
+        <p>Hello!</p>
+    </body>
+</html>
+                
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="D3-Select-and-Append-Function">D3 Select and Append Function<a class="anchor-link" href="#D3-Select-and-Append-Function">&#182;</a></h1>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In d3, the most basic functions are &quot;select&quot; and &quot;append&quot;, &quot;select&quot; is to select an object in html, &quot;append&quot; is to append new element in the object. In the following example we select the body and append the a svg image.</p>
+</div>
+</div>
+</div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">
-In&nbsp;[]:
+In&nbsp;[10]:
 </div>
 <div class="inner_cell">
     <div class="input_area">
-<div class="highlight"><pre> 
+<div class="highlight"><pre><span class="o">%%</span><span class="k">writefile</span> <span class="n">files</span><span class="o">/</span><span class="n">__f1</span><span class="o">.</span><span class="n">template</span>
+
+<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">head</span> <span class="n">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="n">D3</span> <span class="n">tutorial</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;http://d3js.org/d3.v3.min.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">head</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+
+    <span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
+
+        <span class="n">var</span> <span class="n">canvas</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;body&quot;</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;svg&quot;</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;width&quot;</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">,</span> <span class="mi">500</span><span class="p">);</span>
+
+        <span class="n">var</span> <span class="n">circle</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;circle&quot;</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;cx&quot;</span><span class="p">,</span> <span class="mi">250</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;cy&quot;</span><span class="p">,</span> <span class="mi">250</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;r&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;fill&quot;</span><span class="p">,</span> <span class="s">&quot;red&quot;</span><span class="p">);</span>
+
+        <span class="n">var</span> <span class="n">rect</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;rect&quot;</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;width&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">);</span>
+
+        <span class="n">var</span> <span class="n">line</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;line&quot;</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;x1&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;y1&quot;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;x2&quot;</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;y2&quot;</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;stroke&quot;</span><span class="p">,</span> <span class="s">&quot;green&quot;</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;stroke-width&quot;</span><span class="p">,</span> <span class="mi">10</span><span class="p">);</span>
+
+    <span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+
+<span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
 </pre></div>
 
 </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Writing files/__f1.template
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[11]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">html_file</span> <span class="o">=</span> <span class="s">&#39;files/__f1.template&#39;</span>
+<span class="n">IFrame</span><span class="p">(</span><span class="n">html_file</span><span class="p">,</span><span class="mi">550</span><span class="p">,</span><span class="mi">550</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[11]:</div>
+
+<div class="output_html rendered_html output_subarea output_pyout">
+
+        <iframe
+            width="550"
+            height=550"
+            src="files/__f1.template"
+            frameborder="0"
+            allowfullscreen
+        ></iframe>
+        
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Visualizing-Data">Visualizing Data<a class="anchor-link" href="#Visualizing-Data">&#182;</a></h1>
+</div>
+</div>
+</div>
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>You can embed the data in the d3 using some basic java script function.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[15]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="o">%%</span><span class="k">writefile</span> <span class="n">files</span><span class="o">/</span><span class="n">__f2</span><span class="o">.</span><span class="n">template</span>
+
+<span class="o">&lt;</span><span class="err">!</span><span class="n">DOCTYPE</span> <span class="n">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">html</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">head</span> <span class="n">lang</span><span class="o">=</span><span class="s">&quot;en&quot;</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">title</span><span class="o">&gt;</span><span class="n">D3</span> <span class="n">tutorial</span><span class="o">&lt;/</span><span class="n">title</span><span class="o">&gt;</span>
+    <span class="o">&lt;</span><span class="n">script</span> <span class="n">src</span><span class="o">=</span><span class="s">&quot;http://d3js.org/d3.v3.min.js&quot;</span><span class="o">&gt;&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">head</span><span class="o">&gt;</span>
+
+<span class="o">&lt;</span><span class="n">body</span><span class="o">&gt;</span>
+
+    <span class="o">&lt;</span><span class="n">script</span><span class="o">&gt;</span>
+
+        <span class="n">var</span> <span class="n">dataArray</span> <span class="o">=</span> <span class="p">[</span><span class="mi">20</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">];</span>
+
+        <span class="n">var</span> <span class="n">canvas</span> <span class="o">=</span> <span class="n">d3</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s">&quot;body&quot;</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;svg&quot;</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;width&quot;</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">,</span> <span class="mi">250</span><span class="p">);</span>
+
+        <span class="n">var</span> <span class="n">bars</span> <span class="o">=</span> <span class="n">canvas</span><span class="o">.</span><span class="n">selectAll</span><span class="p">(</span><span class="s">&quot;rect&quot;</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">data</span><span class="p">(</span><span class="n">dataArray</span><span class="p">)</span>
+                <span class="o">.</span><span class="n">enter</span><span class="p">()</span>
+                    <span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s">&quot;rect&quot;</span><span class="p">)</span>
+                    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;width&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">d</span> <span class="o">*</span> <span class="mi">10</span><span class="p">;</span> <span class="p">})</span>
+                    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;height&quot;</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+                    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;y&quot;</span><span class="p">,</span> <span class="n">function</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span> <span class="p">{</span> <span class="k">return</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">100</span><span class="p">})</span>
+                    <span class="o">.</span><span class="n">attr</span><span class="p">(</span><span class="s">&quot;fill&quot;</span><span class="p">,</span> <span class="s">&quot;red&quot;</span><span class="p">);</span>
+
+    <span class="o">&lt;/</span><span class="n">script</span><span class="o">&gt;</span>
+
+<span class="o">&lt;/</span><span class="n">body</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">html</span><span class="o">&gt;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>
+Overwriting files/__f2.template
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In the above example, when you insert data into bar chart, just using</p>
+<pre><code>.data(dataArray).enter() </code></pre>
+<p>function, and</p>
+<pre><code>.enter() </code></pre>
+<p>will iterate all the element in the dataArray.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">
+In&nbsp;[16]:
+</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class="highlight"><pre><span class="n">html_file</span> <span class="o">=</span> <span class="s">&#39;files/__f2.template&#39;</span>
+<span class="n">IFrame</span><span class="p">(</span><span class="n">html_file</span><span class="p">,</span><span class="mi">550</span><span class="p">,</span><span class="mi">350</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt output_prompt">
+    Out[16]:</div>
+
+<div class="output_html rendered_html output_subarea output_pyout">
+
+        <iframe
+            width="550"
+            height=350"
+            src="files/__f2.template"
+            frameborder="0"
+            allowfullscreen
+        ></iframe>
+        
+</div>
+
+</div>
+
 </div>
 </div>
 
